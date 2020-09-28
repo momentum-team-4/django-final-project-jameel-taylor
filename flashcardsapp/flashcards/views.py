@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.messages import success, error
+from django.contrib.auth.decorators import login_required
 from .models import Flashcards
 from .forms import DeckForm
 import json
@@ -17,7 +18,7 @@ def deck_detail(request):
     deck = get_object_or_404(Flashcards, pk=pk)
     return render(request, "decks/deck_detail.html", {"deck": deck})
 
-
+@login_required
 def create_deck(request):
     if request.method == "GET":
         deck = DeckForm()
@@ -31,4 +32,6 @@ def create_deck(request):
             return redirect(to='deck_list')
     return render(request, "decks/create_deck.html", {"deck": deck})
 
-
+def get_cards(request, pk):
+    if request.method == "GET":
+        cards = FrontCard.objects.filter()
