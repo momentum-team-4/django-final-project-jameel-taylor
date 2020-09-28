@@ -5,6 +5,14 @@ class DeckForm(ModelForm):
     class Meta:
         model = Flashcards
         fields = [
-            'front',
-            'back',
+            'question',
+            'answer',
         ]
+
+
+class QuestionSide():
+    pass
+
+
+class AnswerSide():
+    pass
