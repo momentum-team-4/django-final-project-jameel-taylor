@@ -11,11 +11,11 @@ def create_account(request):
 
 def deck_list(request):
     decks = Flashcards.objects.all()
-    return render(request, "project/deck_list.html", {"flashcards": decks})
+    return render(request, "decks/deck_list.html", {"flashcards": decks})
 
 def deck_detail(request):
     deck = get_object_or_404(Flashcards, pk=pk)
-    return render(request, "project/deck_detail.html", {"deck": deck})
+    return render(request, "decks/deck_detail.html", {"deck": deck})
 
 
 def create_deck(request):
@@ -30,3 +30,5 @@ def create_deck(request):
             success(request, "New deck created.")
             return redirect(to='deck_list')
     return render(request, "decks/create_deck.html", {"deck": deck})
+
+
