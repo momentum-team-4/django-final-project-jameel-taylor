@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.messages import success, error
 from .models import Flashcards
 from .forms import DeckForm
+import json
 
 
 def create_account(request):
     form = Create_Account()
     return render(request,)
-
 
 def deck_list(request):
     decks = Flashcards.objects.all()

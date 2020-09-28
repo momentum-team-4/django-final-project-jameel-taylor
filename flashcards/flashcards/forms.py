@@ -8,3 +8,7 @@ class DeckForm(ModelForm):
             'front',
             'back',
         ]
+
+
+class FrontCard():
+    
