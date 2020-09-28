@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
-# from .users import
+from project import views as deck_views
+from users import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', project.)
+    path('', views.deck_list, name="deck_list")
 ]
 
 if settings.DEBUG:
