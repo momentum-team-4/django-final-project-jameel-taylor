@@ -1,42 +1,40 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.messages import success, error
+from django.contrib.auth.forms import UserCreationForm
 from .forms import UserCreationForm
 from .models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.messages import success
 
 # Create your views here.
-def create_user(request):
+
+def create_account(request):
     if request.method == 'GET':
         form = UserCreationForm()
-
     else:
         form = UserCreationForm(data=request.POST)
-
         if form.is_valid():
             form.save()
-            
-            return redirect(to='list_contacts')
+            success(request, 'Welcome User!')
+            return redirect(to='')
+    return render(request,'register.html', {'form':form})
 
-    return render(request, "users/create_user.html", {"form": form})
-
-
-def login_user(request):
+def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            success(request, "login successful!")
+            success(request, 'Logged in Successfully')
             login(request, user)
             redirect(to='deck_list')
 
         else:
-            error(request, "no matching username/password combination.")
+            error(request, 'Invalid login')
 
-    return render(request, "users/login_user.html")
+    return render(request, '')
 
 
-def logout_user(request):
+def logout(request):
     logout(request)
-    redirect(to='list_contacts')
+    redirect(to='')
