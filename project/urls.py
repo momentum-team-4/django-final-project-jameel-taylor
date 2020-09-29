@@ -16,14 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from django.views.generic import ListView, TemplateView
 from users import views as users_views
 from flashcards import views
+from flashcards.models import Deck
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name ='base.html')),
     path('', views.deck_list, name="deck_list"),
-    path('register/', views.create_account, name='create_account')
-]
+    path('register/', views.create_account, name='create_account'),
+    path('decks/', ListView.as_view(queryset=Deck.objects.all(),template_name='deck_list.html')),
+    path('decks/<int:deck_id>/',views.deck_list),
+    path('create/deck/', views.create_deck),
+    path('create/flashcard/', views.create_flashcards)
+    ]
 
 if settings.DEBUG:
     import debug_toolbar
