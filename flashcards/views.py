@@ -9,10 +9,11 @@ import json
 
 
 
-def deck_list(request):
+@login_required
+def deck_list(request, pk):
     deck = Deck.objects.get()
     context = {'deck': deck, 'flashcards': deck.flashcards.all()}
-    return render(request, "decks/deck_list.html", context)
+    return render(request, "templates/decks/deck_list.html", context)
 
 @login_required
 def create_deck(request):
@@ -42,3 +43,17 @@ def create_flashcards(request):
                 new_flashcard.save()
                 return HttpResponseRedirect('/decks/')
         return render(request, 'flashcard_create.html', {'form': FlashcardCreateForm()})
+
+
+
+@login_required
+def delete_deck(request, pk):
+    if request.method == "GET":
+        return render(request, "deck/delete_deck.html")
+
+    else:
+        deck = get_object_or_404(Deck, pk=pk)
+        deck.delete()
+        success(request, "deck deleted.")
+
+        return redirect(to="deck_list")
