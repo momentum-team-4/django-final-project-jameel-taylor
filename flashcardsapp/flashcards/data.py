@@ -1,4 +1,4 @@
-FLASHCARDS = {
+DECK = {
     "1": {
         'question': 'What is 1 x 1?',
         'answer': '1',
