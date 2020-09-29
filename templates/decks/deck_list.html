@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Decks</h1>
+
+{% for deck in decks %}
+
+    <p><a href="{% url 'deck_list' pk=deck.pk %}">{{ deck.name }}</a></p>
+
+{% endfor %}
+
+    <p><a href="{% url 'create_deck' %}">Add a new deck</a></p>
+
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 class Deck(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
