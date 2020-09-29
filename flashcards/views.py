@@ -29,6 +29,21 @@ def create_deck(request):
     return redirect(request, 'create_deck.html', {'form': DeckCreateForm()})
 
 @login_required
+def decks_update(request, pk):
+    deck = get_object_or_404(Deck, pk=pk)
+
+    if request.method == "GET":
+        form = DeckCreateForm(instance=deck)
+
+    else:
+        form = DeckCreateForm(data=request.POST, instance=deck)
+        if form.is_valid():
+            form.save()
+            success(request, "deck updated.")
+            return redirect(to='deck_list')
+    return render(request, "decks/deck_update.html", {"form": form})
+
+@login_required
 def create_flashcards(request):
     if request.method == "GET":
         form = FlashcardCreateForm(request.POST)
