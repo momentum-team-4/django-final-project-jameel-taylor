@@ -17,11 +17,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
 from users import views as users_views
-<<<<<<< HEAD
 from flashcards import views
-=======
-from flashcardsapp.flashcards import views 
->>>>>>> a0a5f5341e553dabe9d9836827db6ed7f38adc75
 
 urlpatterns = [
     path('admin/', admin.site.urls),
