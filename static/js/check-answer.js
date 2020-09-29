@@ -1,5 +1,5 @@
-const Front;
-const Back;
+const Front
+const Back
 
 function checkAnswer(event) {
     /*
