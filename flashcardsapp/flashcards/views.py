@@ -8,12 +8,12 @@ from django.contrib.auth.forms import UserCreationForm
 import json
 
 
-# def create_account(request):
-#     form = Create_Account()
-#     return render(request,'register.html', {'form':form})
+def create_account(request):
+    form = Create_Account()
+    return render(request,'register.html', {'form':form})
 
 def deck_list(request):
-    deck = Deck.objects.get(id=deck_id)
+    deck = Deck.objects.get()
     context = {'deck': deck, 'flashcards': deck.flashcards.all()}
     return render(request, "decks/deck_list.html", context)
 
