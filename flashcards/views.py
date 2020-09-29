@@ -34,7 +34,6 @@ def decks_update(request, pk):
 
     if request.method == "GET":
         form = DeckCreateForm(instance=deck)
-
     else:
         form = DeckCreateForm(data=request.POST, instance=deck)
         if form.is_valid():

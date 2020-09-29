@@ -22,7 +22,6 @@ def create_user(request):
 
 def login_user(request):
     if request.method == 'POST':
-
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
@@ -30,7 +29,7 @@ def login_user(request):
         if user is not None:
             success(request, "login successful!")
             login(request, user)
-            redirect(to='list_contacts')
+            redirect(to='deck_list')
 
         else:
             error(request, "no matching username/password combination.")
