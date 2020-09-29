@@ -7,4 +7,4 @@ class DeckCreateForm(Form):
 class FlashcardCreateForm(Form):
     text_prompt = CharField(label='Put question or prompt here', widget=Textarea)
     answer = CharField(label="Answer", widget=Textarea)
-    decks = ModelMultipleChoiceField(queryset=Deck.objects.all())
+    decks = ModelMultipleChoiceField(queryset= Deck.objects.all())
