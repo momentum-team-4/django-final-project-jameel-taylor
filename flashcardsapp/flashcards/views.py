@@ -2,11 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.messages import success, error
 from .models import Flashcards
 from .forms import DeckForm
-<<<<<<< HEAD:flashcards/flashcards/views.py
 from django.contrib.auth.forms import UserCreationForm
-=======
-import json
->>>>>>> 3af613c099ce790cd606c419431e3a662d0ef94a:flashcardsapp/flashcards/views.py
 
 
 def create_account(request):
