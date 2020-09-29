@@ -3,14 +3,11 @@ from django.contrib.messages import success, error
 from django.contrib.auth.decorators import login_required
 from .models import Deck, Flashcard
 from .forms import DeckCreateForm, FlashcardCreateForm
-from django.contrib.auth.forms import UserCreationForm
 
 import json
 
 
-def create_account(request):
-    form = Create_Account()
-    return render(request,'register.html', {'form':form})
+
 
 def deck_list(request):
     deck = Deck.objects.get()
