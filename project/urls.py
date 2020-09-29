@@ -22,7 +22,7 @@ from flashcards import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.deck_list, name="deck_list"),
-    path('register/', views.create_account, name='create_account')
+    path('register/', views.create_account, name='create_account'),
 ]
 
 if settings.DEBUG:
