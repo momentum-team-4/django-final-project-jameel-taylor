@@ -1,13 +1,11 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.contrib.messages import success, error
 from django.contrib.auth.decorators import login_required
-from .models import Flashcards
-from .forms import DeckForm
-<<<<<<< HEAD:flashcards/flashcards/views.py
+from .models import Deck, Flashcard
+from .forms import DeckCreateForm, FlashcardCreateForm
 from django.contrib.auth.forms import UserCreationForm
-=======
+
 import json
->>>>>>> 3af613c099ce790cd606c419431e3a662d0ef94a:flashcardsapp/flashcards/views.py
 
 
 def create_account(request):
@@ -15,27 +13,35 @@ def create_account(request):
     return render(request,'register.html', {'form':form})
 
 def deck_list(request):
-    decks = Flashcards.objects.all()
-    return render(request, "decks/deck_list.html", {"flashcards": decks})
-
-def deck_detail(request):
-    deck = get_object_or_404(Flashcards, pk=pk)
-    return render(request, "decks/deck_detail.html", {"deck": deck})
+    deck = Deck.objects.get(id=deck_id)
+    context = {'deck': deck, 'flashcards': deck.flashcards.all()}
+    return render(request, "decks/deck_list.html", context)
 
 @login_required
 def create_deck(request):
     if request.method == "GET":
-        deck = DeckForm()
-    else:
-        deck = DeckForm(data=request.POST)
+        form = DeckCreateForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            new_deck = Deck(name=name)
+            new_deck.save()
+            return HttpResponseRedirect('/decks/')
+    return redirect(request, 'create_deck.html', {'form': DeckCreateForm()})
 
-        if deck.is_valid():
-            deck.save()
-
-            success(request, "New deck created.")
-            return redirect(to='deck_list')
-    return render(request, "decks/create_deck.html", {"deck": deck})
-
-def get_cards(request, pk):
+@login_required
+def create_flashcards(request):
     if request.method == "GET":
-        cards = FrontCard.objects.filter()
+        form = FlashcardCreateForm(request.POST)
+        if form.is_valid():
+            text_prompt = form.cleaned_data['text_prompt']
+            answer = form.cleaned_data['answer']
+            decks = form.cleaned_data['decks']
+# https://docs.djangoproject.com/en/3.1/topics/forms/
+
+            if text_prompt and answer and decks:
+                new_flashcard = Flashcard(text_prompt=text_prompt, answer=answer)
+                new_flashcard.save()
+                new_flashcard.decks.add(*decks)
+                new_flashcard.save()
+                return HttpResponseRedirect('/decks/')
+        return render(request, 'flashcard_create.html', {'form': FlashcardCreateForm()})
