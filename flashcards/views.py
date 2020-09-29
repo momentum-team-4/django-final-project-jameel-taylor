@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRe
 from django.contrib.messages import success, error
 from django.contrib.auth.decorators import login_required
 from .models import Deck, Flashcard
-from users.model import User
+from users.models import User
 from .forms import DeckCreateForm, FlashcardCreateForm
 
 import json
