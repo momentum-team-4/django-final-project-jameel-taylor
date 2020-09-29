@@ -24,15 +24,8 @@ from flashcards.models import Deck
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name ='base.html')),
-    path('', flashcards_views.deck_list, name='deck_list_self'),
-    path('login_required/', flashcards_views.login_required, name='login_required'),
-    path('notes/<int:pk>/', flashcards_views.create_flashcards, name='create_flashcard'),
-    path('notes/create/', flashcards_views.create_deck, name='create_deck'),
-
-    # path('users/create/', users_views.users_create, name='users_create'),
-    # path('users/login/', users_views.users_login, name='users_login'),
-    # path('users/logout/', users_views.users_logout, name='users_logout')
+    path('', views.deck_list, name="deck_list"),
+    path('register/', views.create_account, name='create_account'),
 ]
 
 
