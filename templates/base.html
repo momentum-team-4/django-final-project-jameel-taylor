@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-
 {% load static %}
-
 <html lang="en-US">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <title>Pick a deck!</title>
+        <title>Flashcards</title>
     </head>
-    <body>
-        <nav>
-            <a href="{% url 'register' %}">Create Account</a>
-            <a href="{% url 'deck_list' %}">Index</a>
-        </nav>
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                <p class="error-message">{{ message }}</p>
-                {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                <p class="success-message">{{ message }}</p>
-                {% else %}
-                <p>{{ message }}</p>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
 
+    <body>
+        <div class="content">
+        <nav class="navigation">
+            <a class="navguide"> - Decks - </a>
+            
+            <!-- #make this a dropdown option at top of screen -->
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/decks/">Go to Decks</a></li>
+                <li><a href="/create/deck/">Create Deck</a></li>
+                <li><a href="/create/flashcard/">Create Flashcard</a></li>
+            </ul>
+            
+        </nav>
+        </div>
+
+        <div class='container'>
         {% block content %}
         {% endblock %}
+        </div>
     </body>
 </html>
