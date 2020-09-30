@@ -18,6 +18,7 @@ def deck_list(request):
 def create_deck(request):
     if request.method == "GET":
         form = DeckCreateForm(request.POST)
+        
         if form.is_valid():
             # name = form.cleaned_data['name']
             # new_deck = Deck(name=name)
