@@ -5,23 +5,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <script src="https://kit.fontawesome.com/cc0e1098f1.js" crossorigin="anonymous"></script>
         <title>Flashcards</title>
     </head>
 
     <body>
         <div class="content">
         <nav class="navigation">
-            <a class="navguide"> - Decks - </a>
+   
             
             <ul>
-                <li class="nav"><a href="{% url 'users_create' %}">Create Account</a></li>
-                <li class="nav"><a href="{% url 'users_login' %}">Login</a></li>
+                <li class="nav"><a href="{% url 'users_create' %}">Create Account <i class="fas fa-user-plus"></i></a></li>
+                <li class="nav"><a href="{% url 'users_login' %}">Login <i class="fas fa-sign-in-alt"></i></a></li>
                 {% if request.user.is_authenticated %}
-                <li class="nav"><a href="{% url 'users_login' %}">Logout</a></li>
+                <li class="nav"><a href="{% url 'users_login' %}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
                 {% endif %}
-                <li class="nav"><a href="/decks/">Go to Decks</a></li>
-                <li class="nav"><a href="/create/deck/">Create Deck</a></li>
-                <li class="nav"><a href="/create/flashcard/">Create Flashcard</a></li>
+                <li class="nav"><a href="/decks/">Go to Decks <i class="fas fa-list-alt"></i></a></li>
+                <li class="nav"><a href="/create/deck/">Create Deck <i class="fas fa-plus-square"></i></a></li>
+                <li class="nav"><a href="/create/flashcard/">Create Flashcard <i class="fas fa-plus-square"></i></a></li>
             </ul>
             
         </nav>
