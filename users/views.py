@@ -16,9 +16,9 @@ def users_create(request):
         if form.is_valid():
             form.save()
             success(request, "Account created.")
-            return redirect(to='base.html')
+            return redirect(to='notes_list')
 
-    return render(request, "base.html", {"form": form})
+    return render(request, "users/users_create.html", {"form": form})
 
 
 def users_login(request):
@@ -30,7 +30,7 @@ def users_login(request):
         if user is not None:
             login(request, user)
             success(request, "login succeeded.")
-            return redirect(to="users_create")
+            return redirect(to="deck_list")
 
     return render(request, "users/users_login.html")
 
@@ -39,4 +39,4 @@ def users_login(request):
 def users_logout(request):
     logout(request)
     success(request, "logout succeeded.")
-    return redirect(to="users_")
+    return redirect(to="notes_list")

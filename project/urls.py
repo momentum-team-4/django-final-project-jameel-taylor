@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="base.html")),
     path('login_required/', flashcards_views.login_required, name='login_required'),
+    path('flashcards/deck_list/', flashcards_views.deck_list, name='deck_list'),
     path('flashcards/create/', flashcards_views.create_deck, name='deck_create'),
     path('flashcards/create/', flashcards_views.create_flashcards, name='flashcards_create'),
     path('flashcards/update/<int:pk>/', flashcards_views.decks_update, name='deck_update'),
