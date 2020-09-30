@@ -8,8 +8,6 @@ from .forms import DeckCreateForm, FlashcardCreateForm
 import json
 
 
-
-
 @login_required
 def deck_list(request, pk):
     deck = Deck.objects.get()
@@ -61,11 +59,21 @@ def create_flashcards(request):
 @login_required
 def delete_deck(request, pk):
     if request.method == "GET":
-        return render(request, "deck/delete_deck.html")
+        return render(request, "decks/delete_deck.html")
 
     else:
         deck = get_object_or_404(Deck, pk=pk)
         deck.delete()
         success(request, "deck deleted.")
 
+        return redirect(to="deck_list")
+
+@login_required
+def delete_flashcard(request, pk):
+    if request.method == "GET":
+        return render(request, "decks/flashcard_edit.html")
+    else:
+        deck = get_object_or_404(Deck, pk=pk)
+        deck.delete()
+        success(request, "flashcard deleted.")
         return redirect(to="deck_list")
