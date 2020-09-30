@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h2>Why you leaving us?</h2>
+<form method="POST">
+    {% csrf_token %}
+    <p>Login<a href="/login">Here</a></p>  
+</form>
+{% endblock %}
