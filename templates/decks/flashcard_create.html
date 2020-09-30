@@ -1,12 +1,7 @@
-<!-- # after a deck is selected from deck_list the cards have to randomly
-     # appear here and a score needs to be kept track. Would we use JS for this?
-     # Like the memory game? Need to ask Will if JS can use django dictionary like 
-     # an array from JS. If so we can use the commented out functions in JS & CSS
-     # https://www.geeksforgeeks.org/how-to-pass-data-to-javascript-in-django-framework/
--->
+
 
 {% block content %}
-<form action="/create/flashcard/" method="post">
+<form action="/create_flashcard/" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit"/>
