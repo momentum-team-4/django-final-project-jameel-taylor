@@ -30,6 +30,7 @@ urlpatterns = [
     path('flashcards/create/', flashcards_views.create_deck, name='deck_create'),
     path('flashcards/create/', flashcards_views.create_flashcards, name='flashcards_create'),
     path('flashcards/update/<int:pk>/', flashcards_views.decks_update, name='deck_update'),
+    path('flashcards/quiz/<int:pk>/', flashcards_views.take_quiz, name='take_quiz'),
     path('users/create/', users_views.users_create, name='users_create'),
     path('users/login/', users_views.users_login, name='users_login'),
     path('users/logout/', users_views.users_logout, name='users_logout')
