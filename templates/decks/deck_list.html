@@ -5,7 +5,7 @@
 
 {% for deck in decks %}
 
-    <p><a href="{% url 'deck_list' pk=deck.pk %}">{{ deck.name }}</a></p>
+    <p><a href="{% url 'deck_detail' pk=deck.pk %}">{{deck.name}}</a></p>
 
 {% endfor %}
 

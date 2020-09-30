@@ -10,13 +10,15 @@ import json
 
 @login_required
 def deck_list(request):
-    deck = Deck.objects.get()
-    context = {'deck': deck, 'flashcards': deck.flashcards.all()}
+    deck = Deck.objects.all()
+    context = {'decks': deck}
     return render(request, "decks/deck_list.html", context)
 
 @login_required
 def create_deck(request):
     if request.method == "GET":
+        form = DeckCreateForm()
+    else:
         form = DeckCreateForm(request.POST)
         
         if form.is_valid():
@@ -26,8 +28,8 @@ def create_deck(request):
             deck = form.save(commit=False)
             deck.user = request.user
             deck.save()
-            return HttpResponseRedirect('/decks/')
-    return redirect(request, 'create_deck.html', {'form': DeckCreateForm()})
+            return redirect(to='deck_list')
+    return render(request, 'decks/create_deck.html', {'form': form})
 
 @login_required
 def decks_update(request, pk):
@@ -42,6 +44,11 @@ def decks_update(request, pk):
             success(request, "deck updated.")
             return redirect(to='deck_list')
     return render(request, "decks/deck_update.html", {"form": form})
+
+@login_required
+def deck_detail(request, pk):
+    deck = get_object_or_404(Deck, pk=pk)
+    return render(request, 'decks/deck_detail.html', {"deck": deck})
 
 @login_required
 def create_flashcards(request):

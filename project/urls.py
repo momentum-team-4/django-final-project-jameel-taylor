@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
-from django.views.generic import ListView, TemplateView
+from django.views.generic import RedirectView, TemplateView
 from users import views as users_views
 from flashcards import views as flashcards_views
 from flashcards.models import Deck
@@ -24,9 +24,10 @@ from flashcards.models import Deck
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name="base.html")),
+    path('', RedirectView.as_view(url='/flashcards/deck_list/')),
     path('login_required/', flashcards_views.login_required, name='login_required'),
     path('flashcards/deck_list/', flashcards_views.deck_list, name='deck_list'),
+    path('flashcards/deck_detail/<int:pk>/', flashcards_views.deck_detail, name='deck_detail'),
     path('flashcards/create_deck/', flashcards_views.create_deck, name='create_deck'),
     path('flashcards/create_flashcard/', flashcards_views.create_flashcards, name='flashcards_create'),
     path('flashcards/update/<int:pk>/', flashcards_views.decks_update, name='deck_update'),
