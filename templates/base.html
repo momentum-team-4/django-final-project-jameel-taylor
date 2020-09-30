@@ -15,14 +15,14 @@
             
             <!-- #make this a dropdown option at top of screen -->
             <ul>
-                <li><a href="{% url 'users_create' %}">Create Account</a></li>
-                <li><a href="{% url 'users_login' %}">Login</a></li>
+                <li class="nav"><a href="{% url 'users_create' %}">Create Account</a></li>
+                <li class="nav"><a href="{% url 'users_login' %}">Login</a></li>
                 {% if request.user.is_authenticated %}
-                <li><a href="{% url 'users_login' %}">Logout</a></li>
+                <li class="nav"><a href="{% url 'users_login' %}">Logout</a></li>
                 {% endif %}
-                <li><a href="/decks/">Go to Decks</a></li>
-                <li><a href="/create/deck/">Create Deck</a></li>
-                <li><a href="/create/flashcard/">Create Flashcard</a></li>
+                <li class="nav"><a href="/decks/">Go to Decks</a></li>
+                <li class="nav"><a href="/create/deck/">Create Deck</a></li>
+                <li class="nav"><a href="/create/flashcard/">Create Flashcard</a></li>
             </ul>
             
         </nav>
