@@ -9,10 +9,10 @@ import json
 
 
 @login_required
-def deck_list(request, pk):
+def deck_list(request):
     deck = Deck.objects.get()
     context = {'deck': deck, 'flashcards': deck.flashcards.all()}
-    return render(request, "templates/decks/deck_list.html", context)
+    return render(request, "decks/deck_list.html", context)
 
 @login_required
 def create_deck(request):
