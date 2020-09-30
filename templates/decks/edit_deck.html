@@ -1,3 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Update Deck</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" value="Update Note">
+</form>
+
+{% endblock %}
+
+
 <form method="POST">
     {# this form should allow people to create a totally new flashcard and add it to the deck #}
 </form>

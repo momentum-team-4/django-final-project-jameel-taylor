@@ -77,3 +77,7 @@ def delete_flashcard(request, pk):
         deck.delete()
         success(request, "flashcard deleted.")
         return redirect(to="deck_list")
+
+def take_quiz(request, pk):
+    if request.method == 'GET':
+        return render(request, 'decks/quiz.html')
