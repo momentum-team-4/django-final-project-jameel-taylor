@@ -55,14 +55,13 @@ def create_flashcards(request):
     if request.method == "GET":
         form = FlashcardCreateForm()
     else:
-        form = FlashcardCreateForm(data=request.POST)        
+        form = FlashcardCreateForm(request.POST)
         if form.is_valid():
-# https://docs.djangoproject.com/en/3.1/topics/forms/
-            form.save()
-            return HttpResponseRedirect('/decks/')
-    return render(request, 'flashcard_create.html', {'form': form})
-
-
+            flashcard = form.save(commit=False)
+            flashcard.user = request.user
+            flashcard.save()
+            return redirect(to='deck_detail')
+    return render(request, 'decks/create_flashcards.html', {'form': form})
 
 @login_required
 def delete_deck(request, pk):
