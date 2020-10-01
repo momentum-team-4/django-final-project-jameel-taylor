@@ -7,10 +7,10 @@
 
 {% for deck in decks %}
 
-    <p><a href="{% url 'deck_detail' pk=deck.pk %}"> {{deck.name}} </a></p>
+    <p class="deckName"><a href="{% url 'deck_detail' pk=deck.pk %}"> {{deck.name}} </a></p>
 
 {% endfor %}
 
-    <p><a href="{% url 'create_deck' %}">Add New Deck <i class="fas fa-layer-group"></i></a></p>
+    <p class="button"><a href="{% url 'create_deck' %}">Add New Deck <i class="fas fa-layer-group"></i></a></p>
 
 {% endblock %}

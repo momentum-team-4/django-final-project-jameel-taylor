@@ -28,7 +28,7 @@ def create_deck(request):
     return render(request, 'decks/create_deck.html', {'form': form})
 
 @login_required
-def decks_update(request, pk):
+def edit_deck(request, pk):
     deck = get_object_or_404(Deck, pk=pk)
 
     if request.method == "GET":
@@ -39,7 +39,7 @@ def decks_update(request, pk):
             form.save()
             success(request, "deck updated.")
             return redirect(to='deck_list')
-    return render(request, "decks/deck_update.html", {"form": form})
+    return render(request, "decks/edit_deck.html", {"form": form})
 
 @login_required
 def deck_detail(request, pk):
@@ -52,13 +52,14 @@ def create_flashcards(request):
         form = FlashcardCreateForm()
     else:
         form = FlashcardCreateForm(data=request.POST)
-        
+
         if form.is_valid():
             flashcard = form.save(commit=False)
             flashcard.user = request.user
             flashcard.save()
-            return redirect(to='deck_detail')
-    return render(request, 'decks/create_flashcards.html', {'form': form})
+        return redirect(to='deck_detail')
+
+    return render(request, 'decks/create_flashcards.html', {"form": form})
 
 @login_required
 def delete_deck(request, pk):

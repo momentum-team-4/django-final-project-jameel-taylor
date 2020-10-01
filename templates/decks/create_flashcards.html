@@ -1,9 +1,14 @@
-
+{% extends "base.html" %}
 
 {% block content %}
-<form action="/create_flashcards/" method="post">
+
+<h2>Add a new flashcard here</h2>
+
+
+<form method="POST">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="submit"/>
 </form>
+
 {% endblock %}

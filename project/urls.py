@@ -31,7 +31,8 @@ urlpatterns = [
     path('flashcards/deck_detail/<int:pk>/', flashcards_views.deck_detail, name='deck_detail'),
     path('flashcards/create_deck/', flashcards_views.create_deck, name='create_deck'),
     path('flashcards/create_flashcards/', flashcards_views.create_flashcards, name='create_flashcards'),
-    path('flashcards/update/<int:pk>/', flashcards_views.decks_update, name='decks_update'),
+    
+    path('flashcards/edit_deck/<int:pk>/', flashcards_views.edit_deck, name='edit_deck'),
     path('flashcards/quiz/<int:pk>/', flashcards_views.take_quiz, name='take_quiz'),
 
     path('users/create/', users_views.users_create, name='users_create'),
