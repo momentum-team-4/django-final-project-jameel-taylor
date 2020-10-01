@@ -5,28 +5,32 @@
 }
 
 .navigation{
-    background-color: rgb(234, 236, 240);
-    border: steelblue 5px solid;
+    background-color: rgb(255, 255, 255);
+    border: steelblue 8px solid;
     border-radius: 5px;
+    
 }
 
 .nav {
     list-style-type: none;
     display: inline-flex;
-    margin: 2px;
+    margin: 5px;
     border-radius: 5px;
-    background-color: rgb(121, 184, 235) ;
+    background-color: rgb(91, 178, 249) ;
     color: rgb(3, 5, 7);
+    box-shadow: 0px 8px 6px 0px gray;
     padding: 8px;
     border-style: none;
     flex-flow: row wrap;
     text-align: center;
 }
 
-
 .nav:hover{
     font-size: 120%;
     color: rgb(108, 254, 254);
+}
+a:visited{
+    color: rgb(0, 0, 0);
 }
 
 .deckName{
@@ -64,11 +68,29 @@ button:active, input[type="submit"]:active {
       border-radius: 10px;
   }
 
+.answerBtn, .next{
+    display: inline-block;
+    height: auto;
+    text-align: center;
+    font-size: large;
+}
+
   .answer, .question{
-      margin: 10px;
-    border: rgb(48, 221, 221) 5px solid;
+    display: inline-block;
+    text-align: center;
+    height: 125px;
+    width: 50%;
+    margin: 30px;
+    border: rgb(54, 255, 255) 5px solid;
+    background-color: rgb(207, 233, 255);
+    text-align: center;
     font-size: xx-large;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 5px #666;
   }
+  
+  .answer:hover, .question:hover{
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  

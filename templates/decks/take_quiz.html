@@ -10,12 +10,14 @@
 
          <div class="question"> <i class="fas fa-question-circle"></i> {{flashcard.text_prompt}} </div>
         
-         <button id="submit" class="answerBtn"> See Answer </button>
+         <button onclick="showAnswer()" id="submit" class="answerBtn"> See Answer </button>
          
-         <!-- #use css to style the answer as hidden until clicked, same as memory game in phase one -->
-         
+
          <div class="answer"> <i class="fas fa-lightbulb"></i> {{flashcard.answer}} </div>
-      {% endfor %}
+
+         <button id="submit" class="next"> Next Flashcard </button>
+
+         {% endfor %}
          
         </div>
       
