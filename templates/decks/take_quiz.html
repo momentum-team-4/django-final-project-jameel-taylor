@@ -7,7 +7,6 @@
     <div class="row">
     
       {% for flashcard in flashcards %}
-
          <div class="question"> <i class="fas fa-question-circle"></i> {{flashcard.text_prompt}} </div>
         
          <button onclick="ShowAndHide()" id="answerBtn" class="answerBtn"> See Answer </button>
@@ -15,10 +14,7 @@
          <div id="answer" class="answer" style="display: none;" > <i class="fas fa-lightbulb"></i> {{flashcard.answer}} </div>
 
          <button id="submit" class="next"> Next Flashcard </button>
-
          {% endfor %}
-         
-        </div>
       
     </div>
 

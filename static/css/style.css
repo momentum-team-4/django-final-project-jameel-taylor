@@ -53,12 +53,12 @@ button, input[type="submit"]{
 }
 
 button:hover, input[type="submit"]:hover{
-    background-color: rgb(170, 47, 38);
+    background-color: rgb(31, 245, 224);
     color: white;
 }
 
 button:active, input[type="submit"]:active {
-    background-color:rgb(170, 47, 38);
+    background-color: rgb(31, 245, 224);
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
