@@ -1,12 +1,9 @@
-const Front
-const Back
+const question
+const answer
 
 function checkAnswer(event) {
-    /*
-        Check whether the 
-    */
 
-    if (event.target.value === Back) {
+    if (event.target.value === answer) {
         event.target.classList.add('correct');
         event.target.classList.remove('incorrect');
     } else {
