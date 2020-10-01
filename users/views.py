@@ -39,4 +39,4 @@ def users_login(request):
 def users_logout(request):
     logout(request)
     success(request, "logout succeeded.")
-    return redirect(to="deck_list")
+    return redirect(to="users_login")

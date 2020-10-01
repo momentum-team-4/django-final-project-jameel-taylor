@@ -21,7 +21,7 @@
                 <li class="nav"><a href="{% url 'users_create' %}">Create Account <i class="fas fa-user-plus"></i></a></li>
                 <li class="nav"><a href="{% url 'users_login' %}">Login <i class="fas fa-sign-in-alt"></i></a></li>
                 {% if request.user.is_authenticated %}
-                <li class="nav"><a href="{% url 'users_login' %}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                <li class="nav"><a href="{% url 'users_logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
                 {% endif %}
                 <li class="nav"><a href="{% url 'deck_list' %}">Go to Decks <i class="fas fa-bars"></i></i></a></li>
                 <li class="nav"><a href="{% url 'create_deck' %}">Create Deck <i class="fas fa-plus-square"></i></a></li>

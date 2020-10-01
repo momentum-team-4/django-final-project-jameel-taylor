@@ -24,14 +24,14 @@ from flashcards.models import Deck
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='/flashcards/deck_list/')),
+    path('', TemplateView.as_view(template_name="base.html")),
     path('login_required/', flashcards_views.login_required, name='login_required'),
     
     path('flashcards/deck_list/', flashcards_views.deck_list, name='deck_list'),
     path('flashcards/deck_detail/<int:pk>/', flashcards_views.deck_detail, name='deck_detail'),
     path('flashcards/create_deck/', flashcards_views.create_deck, name='create_deck'),
     path('flashcards/create_flashcards/', flashcards_views.create_flashcards, name='create_flashcards'),
-    
+    path('flashcards/add_flashcards/<int:pk>/', flashcards_views.add_flashcards, name='add_flashcards'),
     path('flashcards/edit_deck/<int:pk>/', flashcards_views.edit_deck, name='edit_deck'),
     path('flashcards/quiz/<int:pk>/', flashcards_views.take_quiz, name='take_quiz'),
 

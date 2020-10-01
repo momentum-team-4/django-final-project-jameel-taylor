@@ -2,14 +2,17 @@
 
 {% block content %}
 <h1>Flashcards</h1>
+    {% for flashcard in flashcards %}
+        <p>{{flashcard.text_prompt}}</p>
+    {% endfor %}
 
-    <p>{{flashcard.text_prompt}}</p>
+    <p><a href="{% url 'create_flashcards' %}">Create a New Flashcard <i class="fas fa-layer-group"></i></a></p>
 
-    <p><a href="{% url 'create_flashcards' %}">Add a New Flashcard <i class="fas fa-layer-group"></i></a></p>
+    <p><a href="{% url 'add_flashcards' pk=deck.pk %}">Add Flashcard to Deck <i></i></a></p>
 
     <p><a href="{% url 'take_quiz' pk=deck.pk %}"> Quiz Yourself! <i class="fab fa-readme"></i> </a></p>
 
-    
+    <p> Delete Deck <i class="fas fa-trash-alt"></i> </p>
 
     <p><a href="{% url 'deck_list' %}"> Go Back ~ All Decks <i class="fas fa-undo"></i></a></p>
 
