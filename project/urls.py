@@ -26,12 +26,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url='/flashcards/deck_list/')),
     path('login_required/', flashcards_views.login_required, name='login_required'),
+    
     path('flashcards/deck_list/', flashcards_views.deck_list, name='deck_list'),
     path('flashcards/deck_detail/<int:pk>/', flashcards_views.deck_detail, name='deck_detail'),
     path('flashcards/create_deck/', flashcards_views.create_deck, name='create_deck'),
     path('flashcards/create_flashcards/', flashcards_views.create_flashcards, name='create_flashcards'),
     path('flashcards/update/<int:pk>/', flashcards_views.decks_update, name='decks_update'),
     path('flashcards/quiz/<int:pk>/', flashcards_views.take_quiz, name='take_quiz'),
+
     path('users/create/', users_views.users_create, name='users_create'),
     path('users/login/', users_views.users_login, name='users_login'),
     path('users/logout/', users_views.users_logout, name='users_logout')

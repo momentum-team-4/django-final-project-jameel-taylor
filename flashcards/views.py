@@ -20,11 +20,7 @@ def create_deck(request):
         form = DeckCreateForm()
     else:
         form = DeckCreateForm(request.POST)
-        
         if form.is_valid():
-            # name = form.cleaned_data['name']
-            # new_deck = Deck(name=name)
-            # new_deck.save()
             deck = form.save(commit=False)
             deck.user = request.user
             deck.save()
@@ -55,7 +51,8 @@ def create_flashcards(request):
     if request.method == "GET":
         form = FlashcardCreateForm()
     else:
-        form = FlashcardCreateForm(request.POST)
+        form = FlashcardCreateForm(data=request.POST)
+        
         if form.is_valid():
             flashcard = form.save(commit=False)
             flashcard.user = request.user
@@ -67,12 +64,10 @@ def create_flashcards(request):
 def delete_deck(request, pk):
     if request.method == "GET":
         return render(request, "decks/delete_deck.html")
-
     else:
         deck = get_object_or_404(Deck, pk=pk)
         deck.delete()
         success(request, "deck deleted.")
-
         return redirect(to="deck_list")
 
 @login_required
@@ -87,4 +82,4 @@ def delete_flashcard(request, pk):
 
 def take_quiz(request, pk):
     if request.method == 'GET':
-        return render(request, 'decks/quiz.html')
+        return render(request, 'decks/take_quiz.html')
