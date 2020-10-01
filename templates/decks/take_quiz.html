@@ -10,10 +10,9 @@
 
          <div class="question"> <i class="fas fa-question-circle"></i> {{flashcard.text_prompt}} </div>
         
-         <button onclick="showAnswer()" id="submit" class="answerBtn"> See Answer </button>
+         <button onclick="ShowAndHide()" id="answerBtn" class="answerBtn"> See Answer </button>
          
-
-         <div class="answer"> <i class="fas fa-lightbulb"></i> {{flashcard.answer}} </div>
+         <div id="answer" class="answer" style="display: none;" > <i class="fas fa-lightbulb"></i> {{flashcard.answer}} </div>
 
          <button id="submit" class="next"> Next Flashcard </button>
 
